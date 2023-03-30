@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { Botao } from "../Button/index.jsx";
 import { DivBase, DivForm, PlaceInput, PlaceLabel } from ".";
 import { useState } from "react";
@@ -12,6 +12,7 @@ export const Forms = () => {
     setInsert([...insert, data]);
     console.log(data);
   }
+
 
   return (
     <DivBase>
@@ -38,10 +39,9 @@ export const Forms = () => {
         <PlaceInput {...register("celular")} label="celular" type="text" />
         <PlaceLabel>Email</PlaceLabel>
         <PlaceInput {...register("email")} label="email" type="text" />
-        <Link to="/FormAuto">
-          <Botao text="Enviar" />
-        </Link>
+          <Botao type="submit" text="Enviar" />
       </DivForm>
+      
     </DivBase>
   );
 };
