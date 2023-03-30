@@ -3,32 +3,24 @@ import styled from "styled-components";
 //Menu
 
 export const MenuBase = styled.div`
-
-display: flex;
-flex-direction: column;
-border: solid;
-justify-content: center;
-
-`
+  display: flex;
+  flex-direction: column;
+  border: solid;
+  justify-content: center;
+`;
 export const Menu = styled.div`
-padding: 10px;
-
-border: solid;
-
-`
+  padding: 10px;
+  text-align: center;
+  border: solid;
+`;
 
 //Content
 
 export const ContentBase = styled.div`
-display: flex;
-border: solid;
-
-
-
-`
+  display: flex;
+  border: solid;
+`;
 export const Content = styled.div`
-
-
-border: solid;
-
-`
+  border: solid;
+  width: 100%;
+`;
