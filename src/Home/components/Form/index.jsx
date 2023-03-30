@@ -3,6 +3,9 @@ import { Link, Navigate } from "react-router-dom";
 import { Botao } from "../Button/index.jsx";
 import { DivBase, DivForm, PlaceInput, PlaceLabel } from ".";
 import { useState } from "react";
+import { Docxtemplater } from "docxtemplater";
+import JSZip from "jszip";
+import { saveAs } from "file-saver";
 export const Forms = () => {
   const { register, handleSubmit } = useForm({});
 
@@ -11,8 +14,37 @@ export const Forms = () => {
   function inserir(data) {
     setInsert([...insert, data]);
     console.log(data);
-  }
 
+      // Carrega o modelo de documento
+      const file = "meu_modelo.docx";
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", file, { async: false });
+      xhr.responseType = "arraybuffer";
+      xhr.send();
+      const buffer = xhr.response;
+
+      // Cria um objeto com os dados do formulário
+      const context = {
+        nome: data.nome,
+        cpf: data.cpf,
+        endereco: data.endereco,
+      };
+
+      // Substitui os marcadores pelos valores do formulário
+      const zip = new JSZip(buffer);
+      const doc = new Docxtemplater();
+      doc.loadZip(zip);
+      doc.setData(context);
+      doc.render();
+
+      // Salva o novo documento
+      const docBuffer = doc.getZip().generate({ type: "arraybuffer" });
+      saveAs(
+        new Blob([docBuffer], { type: "application/octet-stream" }),
+        "meu_documento.docx"
+      );
+    }
+  
 
   return (
     <DivBase>
@@ -39,12 +71,11 @@ export const Forms = () => {
         <PlaceInput {...register("celular")} label="celular" type="text" />
         <PlaceLabel>Email</PlaceLabel>
         <PlaceInput {...register("email")} label="email" type="text" />
-          <Botao type="submit" text="Enviar" />
+        <Botao type="submit" text="Enviar" />
       </DivForm>
-      
     </DivBase>
   );
-};
+}
 
 /*NOME -
 CPF-
