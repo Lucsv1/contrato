@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.3.5",
     "chatgpt": "^5.2.2",
+    "chatgpt-api-free": "^1.0.4",
     "docxtemplater": "^3.36.1",
     "file-saver": "^2.0.5",
     "jszip": "^3.10.1",
@@ -44,5 +45,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lucsv1/contrato.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lucsv1/contrato/issues"
+  },
+  "homepage": "https://github.com/Lucsv1/contrato#readme"
 }
